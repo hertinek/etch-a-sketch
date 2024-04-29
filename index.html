@@ -4,8 +4,52 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Etch-A-Sketch</title>
+    
+    <style>
+    
+    	body {
+    		display: flex;
+		justify-content: center;
+		align-items: center;
+		height: 100vh;
+    	}
+    	
+    	.container {
+		border: 2px solid red;
+		width : 40vw;
+		height: 40vw;
+		display: flex;
+		flex-wrap: wrap;
+    	}
+    	
+    	.square {
+    		border: 1px solid black;
+    		height: auto;
+    		width: auto;
+    	}
+    
+    </style>
+    
 </head>
 <body>
+
+	<div class="container"></div>
+	
+	<script>
+	
+		const container = document.querySelector('.container');
+		const numberOfSquares = 16;
+		const squaresPerRow = Math.sqrt(numberOfSquares);
+		const squareWidth = 100 / squaresPerRow;
+		for(i = 0; i < numberOfSquares; i++) {
+			const square = document.createElement('div');
+			square.className = 'square';
+			square.style.width = `calc(${squareWidth}% - 2px)`;
+			square.style.height = `calc(${squareWidth}% - 2px)`;
+			container.appendChild(square);
+		}
+		
+	</script>
     
 </body>
 </html>
