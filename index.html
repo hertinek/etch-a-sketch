@@ -36,16 +36,20 @@
 	<script>
 	
 		const container = document.querySelector('.container');
-		const numberOfSquares = 16;
-		const squaresPerRow = Math.sqrt(numberOfSquares);
-		const squareWidth = 100 / squaresPerRow;
-		for(i = 0; i < numberOfSquares; i++) {
-			const square = document.createElement('div');
-			square.className = 'square';
-			square.style.width = `calc(${squareWidth}% - 2px)`;
-			square.style.height = `calc(${squareWidth}% - 2px)`;
-			container.appendChild(square);
-		}
+
+		function buildGrid(squaresPerSide) {
+			container.innerHTML = "";
+			const squareWidth = 100 / squaresPerSide;	
+			const numberOfSquares = squaresPerSide ** 2;
+			for(i = 0; i < numberOfSquares; i++) {
+				const square = document.createElement('div');
+				square.className = 'square';
+				square.style.width = `calc(${squareWidth}% - 2px)`;
+				square.style.height = `calc(${squareWidth}% - 2px)`;
+				container.appendChild(square);
+			};
+		};
+		buildGrid(16);
 		
 	</script>
     
