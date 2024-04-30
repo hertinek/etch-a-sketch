@@ -51,6 +51,20 @@
 		};
 		buildGrid(16);
 		
+		const squares = document.querySelectorAll('.square');
+		
+		function colorizeSquare(square) {
+			square.style.backgroundColor = 'blue';
+		}
+		
+		squares.forEach(square => {
+			square.addEventListener('mouseenter', function(event) {
+			colorizeSquare(square);
+			});
+		});
+		
+		
+		
 	</script>
     
 </body>
