@@ -9,9 +9,17 @@
     
     	body {
     		display: flex;
-		justify-content: center;
-		align-items: center;
+    		flex-direction: column;
+    		justify-content: center;
+    		align-items: center;
 		height: 100vh;
+    	}
+    	
+    	.button {
+    		font-size: 20px;
+    		border: 2px solid blue;
+    		border-radius: 5px;
+    		margin: 40px;
     	}
     	
     	.container {
@@ -29,8 +37,10 @@
     </style>
     
 </head>
+
 <body>
 
+	<button class="button">Generate your own grid!</button>
 	<div class="container"></div>
 	
 	<script>
@@ -51,11 +61,15 @@
 		};
 		buildGrid(16);
 		
+		const button = document.querySelector(".button");
+		button.addEventListener	
+		
+		
 		const squares = document.querySelectorAll('.square');
 		
 		function colorizeSquare(square) {
 			square.style.backgroundColor = 'blue';
-		}
+		};
 		
 		squares.forEach(square => {
 			square.addEventListener('mouseenter', function(event) {
