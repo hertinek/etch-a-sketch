@@ -46,37 +46,46 @@
 	<script>
 	
 		const container = document.querySelector('.container');
-
-		function buildGrid(squaresPerSide) {
-			container.innerHTML = "";
-			const squareWidth = 100 / squaresPerSide;	
-			const numberOfSquares = squaresPerSide ** 2;
-			for(i = 0; i < numberOfSquares; i++) {
-				const square = document.createElement('div');
-				square.className = 'square';
-				square.style.width = `calc(${squareWidth}% - 2px)`;
-				square.style.height = `calc(${squareWidth}% - 2px)`;
-				container.appendChild(square);
-			};
-		};
-		buildGrid(16);
 		
 		const button = document.querySelector(".button");
-		button.addEventListener	
-		
-		
-		const squares = document.querySelectorAll('.square');
-		
-		function colorizeSquare(square) {
-			square.style.backgroundColor = 'blue';
-		};
-		
-		squares.forEach(square => {
-			square.addEventListener('mouseenter', function(event) {
-			colorizeSquare(square);
-			});
+		button.addEventListener('click', event => {
+			let squaresPerSideChoice = parseInt(prompt("How many squares per side do you want?", "No more than 100 please!"));
+			buildGrid(squaresPerSideChoice);
 		});
 		
+		function buildGrid(squaresPerSide) {
+			if(squaresPerSide >= 1 && squaresPerSide <= 100) {
+				container.innerHTML = "";
+				const squareWidth = 100 / squaresPerSide;	
+				const numberOfSquares = squaresPerSide ** 2;
+				container.style.backgroundColor = "black";
+				for(i = 0; i < numberOfSquares; i++) {
+					const square = document.createElement('div');
+					square.addEventListener('mouseenter', function(event) {
+					colorizeSquare(square);
+					});
+					square.className = 'square';
+					square.style.width = `calc(${squareWidth}% - 2px)`;
+					square.style.height = `calc(${squareWidth}% - 2px)`;
+					square.style.backgroundColor = "white";
+					container.appendChild(square);
+				};
+			} else {
+				alert("You're a fucking moron!");
+			}
+		};
+		
+		function colorizeSquare(square) {
+			console.log (square.style.backgroundColor);
+			if(square.style.backgroundColor === "white"){
+				const randomHue = Math.random() * 360;
+				square.style.backgroundColor = `hsl(${randomHue}deg 100% 50%)`;
+				square.style.opacity = 1;
+			} else {
+				square.style.opacity -= 0.1;
+			}
+		};
+				
 		
 		
 	</script>
